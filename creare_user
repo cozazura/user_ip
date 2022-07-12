@@ -1,0 +1,11 @@
+#! /usr/bin/env python
+
+with open('ip.txt') as f:
+    ip = f.readlines()
+    print ip;
+    with open ('run.sh', 'w') as rsh:
+        rsh.write('''\
+    #! /bin/bash
+    echo ip
+    echo "more lines"
+    ''')

@@ -6,10 +6,10 @@ user= str(input())
 print( "Introduceti parola pentru user-ul pe care doriti sa-l creati: " )
 parola= str(input())
 with open(r'ip.txt','r') as f:
+    ip = f.read().splitlines()
+with open(r"ip.txt", 'r') as f:
     for count, line in enumerate(f):
         pass
-    ip = f.read().splitlines()
-
 for i in range(0,count):
     print( "nume user pentru ip ", ip[i] , ":")
     nume_c= str(input())

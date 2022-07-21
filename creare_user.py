@@ -10,13 +10,13 @@ with open(r'ip.txt','r') as f:
 with open(r"ip.txt", 'r') as f:
     for count, line in enumerate(f):
         pass
-for i in range(0,count):
+for i in range(0,count+1):
     print( "nume user pentru ip ", ip[i] , ":")
     nume_c= str(input())
     print( "parola pentru ip ", ip[i] , ":")
     parola_c= str(input())
-    command= "echo "+parola_c+" | sudo useradd -m -p $(openssl passwd -1 " +parola+") "+ user 
-    command2="echo "+parola_c+" | sudo usermod -aG sudo "+ user
+    command= "echo "+parola_c+" | sudo -S useradd -m -p $(openssl passwd -1 " +parola+") "+ user 
+    command2="echo "+parola_c+" | sudo -S usermod -aG sudo "+ user
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(ip[i], username=nume_c, password=parola_c)

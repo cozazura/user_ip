@@ -15,9 +15,11 @@ for i in range(0,count):
     nume_c= str(input())
     print( "parola pentru ip ", ip[i] , ":")
     parola_c= str(input())
-    command= "sudo useradd -p $(openssl passwd -1 " +parola+") "+ user 
+    command= "echo "+parola_c+" | sudo useradd -m -p $(openssl passwd -1 " +parola+") "+ user 
+    command2="echo "+parola_c+" | sudo usermod -aG sudo "+ user
     ssh = paramiko.SSHClient()
     ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
     ssh.connect(ip[i], username=nume_c, password=parola_c)
     ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(command)
+    ssh_stdin, ssh_stdout, ssh_stderr = ssh.exec_command(command2)
     ssh.close()
